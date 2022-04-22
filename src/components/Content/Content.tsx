@@ -28,7 +28,6 @@ const Content: React.FC<{
     } = props;
 
     const contentViewHandler = () => {
-        console.log(id);
         props.showModel(id, media_type);
     };
 

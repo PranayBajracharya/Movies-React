@@ -31,7 +31,7 @@ const Movies: React.FC<{ showModel: (id: number, media_type: string) => void; }>
                         release_date={content.release_date ?? content.first_air_date}
                         original_language={content.original_language}
                         vote_average={content.vote_average}
-                        media_type="Movie"
+                        media_type="movie"
                         showModel={props.showModel}
                     ></Content>
                 ))}

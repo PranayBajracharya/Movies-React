@@ -23,16 +23,15 @@
 
 @media (min-width: 768px) {
     .modal {
-        width: 80vw;
-        /* max-width: 1600px; */
-        left: calc(50% - 40vw);
+        width: 60vw;
+        left: calc(50% - 30vw);
     }
 }
 
 @keyframes slide-down {
     from {
         opacity: 0;
-        transform: translateY(-3rem);
+        transform: translateY(-6rem);
     }
     to {
         opacity: 1;
