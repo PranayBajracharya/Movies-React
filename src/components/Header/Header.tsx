@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import {
     Heading,
     HStack,
@@ -15,12 +16,39 @@ const Header: React.FC = () => {
             w="100%"
             maxW="1600px"
         >
-            <Heading>Movies React</Heading>
+            <Heading color="primary.default">Movies React</Heading>
 
             <UnorderedList display="flex" styleType="none">
-                <ListItem mx={5}>Home</ListItem>
-                <ListItem mx={5}>Movies</ListItem>
-                <ListItem mx={5}>TV-Series</ListItem>
+                <ListItem mx={5}>
+                    <NavLink
+                        className={(navData) =>
+                            navData.isActive ? "active" : ""
+                        }
+                        to="/"
+                    >
+                        Home
+                    </NavLink>
+                </ListItem>
+                <ListItem mx={5}>
+                    <NavLink
+                        className={(navData) =>
+                            navData.isActive ? "active" : ""
+                        }
+                        to="/movies"
+                    >
+                        Movies
+                    </NavLink>
+                </ListItem>
+                <ListItem mx={5}>
+                    <NavLink
+                        className={(navData) =>
+                            navData.isActive ? "active" : ""
+                        }
+                        to="/tv-series"
+                    >
+                        TV-Series
+                    </NavLink>
+                </ListItem>
             </UnorderedList>
 
             <Input w="250px" />

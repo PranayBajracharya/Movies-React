@@ -44,11 +44,10 @@ const Content: React.FC<{
                         position="absolute"
                         top="-20px"
                         right="-10px"
-                        backgroundColor="#151515"
-                        color="white"
+                        backgroundColor="#00FFCC"
+                        color="#222222"
                         w="28px"
                         borderRadius={5}
-                        border="2px solid white"
                         textAlign="center"
                     >
                         {vote_average}
@@ -64,8 +63,8 @@ const Content: React.FC<{
                         <Text>{media}</Text>
                         <Text
                             borderRadius={5}
-                            backgroundColor="#151515"
-                            color="white"
+                            backgroundColor="#00FFCC"
+                            color="#222222"
                             px={2}
                         >
                             {original_language.toUpperCase()}

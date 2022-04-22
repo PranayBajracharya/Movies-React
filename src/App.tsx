@@ -11,7 +11,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Trending />} />
                 <Route path="/movies" element={<Trending />} />
-                <Route path="/series" element={<Trending />} />
+                <Route path="/tv-series" element={<Trending />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>
