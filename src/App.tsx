@@ -7,11 +7,14 @@ import Movies from "./pages/Movies";
 import TVSeries from "./pages/TVSeries";
 import ErrorPage from "./pages/ErrorPage";
 import Model from "./UI/Model";
+import AboutContent from "./components/AboutContent/AboutContent";
 
 function App() {
     const [model, setModel] = useState<boolean>(false);
+    const [detailModel, setDetailModel] = useState<{id: number, media_type: string } | null>(null);
 
-    const showModel = () => {
+    const showModel = (id: number, media_type: string) => {
+        setDetailModel({id, media_type});
         setModel(true);
     };
 
@@ -22,7 +25,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
-            {model && <Model hideModel={hideModel}>asdasdasd</Model>}
+            {model && detailModel && <Model hideModel={hideModel}><AboutContent details={detailModel} /></Model>}
             <Routes>
                 <Route path="/" element={<Trending showModel={showModel}/>} />
                 <Route path="/movies" element={<Movies showModel={showModel}/>} />

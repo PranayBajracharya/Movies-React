@@ -8,15 +8,17 @@ import {
 } from "@chakra-ui/react";
 
 const Content: React.FC<{
+    id: number;
     img: string;
     title: string;
     release_date: string;
     original_language: string;
     vote_average: number;
     media_type: string;
-    showModel: () => void;
+    showModel: (id: number, media_type: string) => void;
 }> = (props) => {
     const {
+        id,
         img,
         title,
         release_date,
@@ -26,7 +28,8 @@ const Content: React.FC<{
     } = props;
 
     const contentViewHandler = () => {
-        props.showModel();
+        console.log(id);
+        props.showModel(id, media_type);
     };
 
     let media = media_type;
