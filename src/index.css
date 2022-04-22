@@ -1,26 +1,27 @@
 :root {
-  --primary: #00FFCC;
-  --secondary: #222222;
-  --alternate: #EEEEEE;
+    --primary: #00ffcc;
+    --secondary: #222222;
+    --alternate: #eeeeee;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--secondary);
-  color: var(--alternate);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--secondary);
+    color: var(--alternate);
 }
 
 .active {
-  color: var(--primary);
+    color: var(--primary);
 }

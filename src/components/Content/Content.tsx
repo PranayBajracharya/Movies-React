@@ -35,6 +35,7 @@ const Content: React.FC<{
             display="flex"
             flexDirection="column"
             alignItems="center"
+            mb={5}
         >
         
             <VStack position="relative">
