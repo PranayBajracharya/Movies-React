@@ -1,0 +1,97 @@
+import {
+    GridItem,
+    Heading,
+    HStack,
+    VStack,
+    Text,
+    Image,
+} from "@chakra-ui/react";
+
+const Content: React.FC<{
+    img: string;
+    title: string;
+    release_date: string;
+    original_language: string;
+    vote_average: number;
+    media_type: string;
+}> = (props) => {
+    const {
+        img,
+        title,
+        release_date,
+        media_type,
+        original_language,
+        vote_average,
+    } = props;
+
+    let media = media_type;
+    if (media_type === "movie") {
+        media = "Movie";
+    } else if (media_type === "tv") {
+        media = "TV Series";
+    }
+    return (
+        <GridItem
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+        >
+        
+            <VStack position="relative">
+                <Image src={`https://image.tmdb.org/t/p/w300/${img}`} alt={title} />
+                {vote_average !== 0 && (
+                    <Text
+                        position="absolute"
+                        top="-20px"
+                        right="-10px"
+                        backgroundColor="#151515"
+                        color="white"
+                        w="28px"
+                        borderRadius={5}
+                        border="2px solid white"
+                        textAlign="center"
+                    >
+                        {vote_average}
+                    </Text>
+                )}
+            </VStack>
+            <VStack flex="auto" justifyContent="space-between" p={1} w="100%">
+                <Heading fontSize="18px" fontWeight="600" textAlign="center">
+                    {title}
+                </Heading>
+                <HStack w="100%" justifyContent="space-between">
+                    <HStack>
+                        <Text>{media}</Text>
+                        <Text
+                            borderRadius={5}
+                            backgroundColor="#151515"
+                            color="white"
+                            px={2}
+                        >
+                            {original_language.toUpperCase()}
+                        </Text>
+                    </HStack>
+                    <Text>{release_date}</Text>
+                </HStack>
+            </VStack>
+        </GridItem>
+    );
+};
+
+export default Content;
+// import Content from "../../interfaces/content";
+
+// const Content: React.FC<{ content: Content }> = (props) => {
+//     const { poster_path, title } = props;
+//     return (
+//         <GridItem
+//             display="flex"
+//             justifySelf="center"
+//         >
+//             <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`}></img>
+//             <Heading>{title}</Heading>
+//         </GridItem>
+//     );
+// };
+
+// export default Content;
