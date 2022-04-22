@@ -14,6 +14,7 @@ const Content: React.FC<{
     original_language: string;
     vote_average: number;
     media_type: string;
+    showModel: () => void;
 }> = (props) => {
     const {
         img,
@@ -23,6 +24,10 @@ const Content: React.FC<{
         original_language,
         vote_average,
     } = props;
+
+    const contentViewHandler = () => {
+        props.showModel();
+    };
 
     let media = media_type;
     if (media_type === "movie") {
@@ -36,6 +41,7 @@ const Content: React.FC<{
             flexDirection="column"
             alignItems="center"
             mb={5}
+            onClick={contentViewHandler}
         >
         
             <VStack position="relative">

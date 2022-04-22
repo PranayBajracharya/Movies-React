@@ -4,7 +4,7 @@ import { Grid } from "@chakra-ui/react";
 
 import Content from "../components/Content/Content";
 
-const Movies: React.FC = () => {
+const Movies: React.FC<{ showModel: () => void; }> = (props) => {
     const [movies, setMovies] = useState<any[]>([]);
 
     const fetchMovies = async () => {
@@ -31,6 +31,7 @@ const Movies: React.FC = () => {
                         original_language={content.original_language}
                         vote_average={content.vote_average}
                         media_type="Movie"
+                        showModel={props.showModel}
                     ></Content>
                 ))}
         </Grid>

@@ -4,7 +4,7 @@ import { Grid } from "@chakra-ui/react";
 
 import Content from "../components/Content/Content";
 
-const Trending: React.FC = () => {
+const Trending: React.FC<{ showModel: () => void; }> = (props) => {
     const [trending, setTrending] = useState<any[]>([]);
 
     const fetchTrending = async () => {
@@ -20,6 +20,7 @@ const Trending: React.FC = () => {
     }, []);
 
     return (
+        <>
         <Grid templateColumns="repeat(5, 1fr)" gap={6} mx={10} my={6} maxWidth="1600px" justifySelf="center">
             {trending &&
                 trending.map((content) => (
@@ -31,9 +32,12 @@ const Trending: React.FC = () => {
                         original_language={content.original_language}
                         vote_average={content.vote_average}
                         media_type={content.media_type}
+                        showModel={props.showModel}
                     ></Content>
                 ))}
         </Grid>
+        </>
+        
     );
 };
 
