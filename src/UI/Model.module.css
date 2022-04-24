@@ -21,7 +21,14 @@
     animation: slide-down 300ms ease-out forwards;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
+    .modal {
+        width: 80vw;
+        left: calc(50% - 40vw);
+    }
+}
+
+@media (min-width: 1200px) {
     .modal {
         width: 60vw;
         left: calc(50% - 30vw);

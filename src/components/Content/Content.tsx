@@ -7,6 +7,8 @@ import {
     Image,
 } from "@chakra-ui/react";
 
+import { no_poster } from "../../utils/img";
+
 const Content: React.FC<{
     id: number;
     img: string;
@@ -45,9 +47,15 @@ const Content: React.FC<{
             mb={5}
             onClick={contentViewHandler}
         >
-        
-            <VStack position="relative">
-                <Image src={`https://image.tmdb.org/t/p/w300/${img}`} alt={title} />
+            <VStack 
+                position="relative" 
+                height="100%"
+            >
+                <Image
+                    src={img ? `https://image.tmdb.org/t/p/w300/${img}` : no_poster}
+                    alt={title}
+                    height="100%"
+                />
                 {vote_average !== 0 && (
                     <Text
                         position="absolute"
@@ -63,7 +71,7 @@ const Content: React.FC<{
                     </Text>
                 )}
             </VStack>
-            <VStack flex="auto" justifyContent="space-between" p={1} w="100%">
+            <VStack flex="auto" justifyContent="space-between" p={1} w="100%" height="100px">
                 <Heading fontSize="18px" fontWeight="600" textAlign="center">
                     {title}
                 </Heading>

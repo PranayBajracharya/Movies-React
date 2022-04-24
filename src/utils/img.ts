@@ -1,0 +1,1 @@
+export const no_poster = "https://www.movienewz.com/img/films/poster-holder.jpg";
