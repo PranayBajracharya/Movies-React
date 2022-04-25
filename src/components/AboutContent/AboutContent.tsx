@@ -39,7 +39,7 @@ const AboutContent: React.FC<{
                     details!.id
                 }?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
             );
-            console.log("Data", data);
+            // console.log("Data", data);
             setAboutDetails(data);
         };
         fetchDetails();
@@ -52,7 +52,7 @@ const AboutContent: React.FC<{
                     details!.id
                 }/credits?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
             );
-            console.log("Cast", data.cast);
+            // console.log("Cast", data.cast);
             setCasts(data.cast);
         };
         fetchCast();
