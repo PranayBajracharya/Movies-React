@@ -99,7 +99,7 @@ const Search: React.FC<{
     }, [searchInput]);
 
     const contentViewHandler = (id: number, media_type: string) => {
-        console.log(id, media_type);
+        // console.log(id, media_type);
         
         props.showModel(id, media_type);
     }
