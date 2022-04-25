@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom";
-import {
-    Heading,
-    HStack,
-    UnorderedList,
-    ListItem,
-    Input,
-} from "@chakra-ui/react";
+import { Heading, HStack, UnorderedList, ListItem } from "@chakra-ui/react";
 
-const Header: React.FC = () => {
+import Search from "../Search/Search";
+
+const Header: React.FC<{
+    showModel: (id: number, media_type: string) => void;
+}> = (props) => {
     return (
         <HStack
             justifyContent="space-between"
@@ -51,7 +49,7 @@ const Header: React.FC = () => {
                 </ListItem>
             </UnorderedList>
 
-            <Input w="250px" />
+            <Search showModel={props.showModel} />
         </HStack>
     );
 };

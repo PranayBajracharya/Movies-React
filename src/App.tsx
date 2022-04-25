@@ -24,7 +24,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Header />
+            <Header showModel={showModel}/>
             {model && detailModel && <Model hideModel={hideModel}><AboutContent details={detailModel} /></Model>}
             <Routes>
                 <Route path="/" element={<Trending showModel={showModel}/>} />

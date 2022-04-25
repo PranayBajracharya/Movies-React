@@ -39,7 +39,7 @@ const AboutContent: React.FC<{
                     details!.id
                 }?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
             );
-            console.log(data);
+            console.log("Data", data);
             setAboutDetails(data);
         };
         fetchDetails();
@@ -52,14 +52,14 @@ const AboutContent: React.FC<{
                     details!.id
                 }/credits?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
             );
-            console.log(data.cast);
+            console.log("Cast", data.cast);
             setCasts(data.cast);
         };
         fetchCast();
     }, [details]);
 
     return (
-        <HStack color="alternate.default" alignItems="flex-start" maxH="80vh">
+        <HStack color="alternate.default" justifyContent="space-between" alignItems="stretch">
             {aboutDetails && (
                 <>
                     <VStack mr={3} alignSelf="center">
@@ -76,11 +76,10 @@ const AboutContent: React.FC<{
                     </VStack>
                     <VStack
                         w="60%"
-                        alignItems="flex-start"
+                        justifyContent="space-between"
                         overflowY="auto"
-                        h="100%"
                     >
-                        <VStack>
+                        <VStack alignItems="flex-start">
                             <Heading color="primary.default">
                                 {aboutDetails.name ?? aboutDetails.title}
                             </Heading>
@@ -112,10 +111,15 @@ const AboutContent: React.FC<{
                                     </>
                                 )}
                             </HStack>
-                            <VStack alignItems="flex-start" overflowY="auto" maxHeight="170px">
-                                <Text>{aboutDetails.overview}</Text>
+                            <VStack
+                                alignItems="flex-start"
+                                overflowY="auto"
+                                // maxHeight="170px"
+                            >
+                                <Text maxHeight="115px" overflowY="auto">{aboutDetails.overview}</Text>
                                 <VStack alignItems="flex-start">
-                                    {aboutDetails.production_countries && (
+                                    {aboutDetails.production_countries.length >
+                                        0 && (
                                         <Text>
                                             Country:{" "}
                                             {
@@ -133,7 +137,8 @@ const AboutContent: React.FC<{
                                                 aboutDetails.first_air_date}
                                         </Text>
                                     )}
-                                    {aboutDetails.production_companies && (
+                                    {aboutDetails.production_companies.length >
+                                        0 && (
                                         <Text>
                                             Production:{" "}
                                             {
@@ -146,20 +151,23 @@ const AboutContent: React.FC<{
                                 </VStack>
                             </VStack>
                         </VStack>
-                        <VStack w="100%">
-                            <Heading color="primary.default" size="lg">
-                                Cast
-                            </Heading>
-                            <HStack
-                                overflowX="auto"
-                                overflowY="hidden"
-                                w="100%"
-                                // h="30%"
-                                // minH="150px"
-                            >
-                                {casts &&
-                                    casts.map((cast) => (
-                                        <VStack minW="20%" h="100%">
+                        {casts && casts!.length > 0 && (
+                            <VStack w="100%" alignItems="flex-start" mt="20px">
+                                <Heading color="primary.default" size="lg">
+                                    Cast
+                                </Heading>
+                                <HStack
+                                    overflowX="auto"
+                                    overflowY="hidden"
+                                    w="100%"
+                                >
+                                    {casts.map((cast) => (
+                                        <VStack
+                                            minW="20%"
+                                            h="100%"
+                                            key={cast.id}
+                                            marginBottom="5px"
+                                        >
                                             <Image
                                                 src={
                                                     cast.profile_path
@@ -167,6 +175,7 @@ const AboutContent: React.FC<{
                                                         : no_poster
                                                 }
                                                 alt={cast.id.toString()}
+                                                maxH="150px"
                                             ></Image>
                                             <Text
                                                 display="flex"
@@ -179,9 +188,9 @@ const AboutContent: React.FC<{
                                             </Text>
                                         </VStack>
                                     ))}
-                                ;
-                            </HStack>
-                        </VStack>
+                                </HStack>
+                            </VStack>
+                        )}
                     </VStack>
                 </>
             )}

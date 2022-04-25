@@ -45,7 +45,6 @@ const Content: React.FC<{
             flexDirection="column"
             alignItems="center"
             mb={5}
-            onClick={contentViewHandler}
         >
             <VStack position="relative" height="100%">
                 <Image
@@ -56,6 +55,7 @@ const Content: React.FC<{
                     }
                     alt={title}
                     height="100%"
+                    onClick={contentViewHandler}
                 />
                 {vote_average !== 0 && (
                     <Text
@@ -79,7 +79,7 @@ const Content: React.FC<{
                 w="100%"
                 height="100px"
             >
-                <Heading fontSize="18px" fontWeight="600" textAlign="center">
+                <Heading fontSize="18px" fontWeight="600" textAlign="center" onClick={contentViewHandler}>
                     {title}
                 </Heading>
                 <HStack w="100%" justifyContent="space-between">

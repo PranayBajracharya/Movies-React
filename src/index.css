@@ -25,3 +25,14 @@ body {
 .active {
     color: var(--primary);
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
