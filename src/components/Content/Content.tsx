@@ -33,7 +33,7 @@ const Content: React.FC<{
         props.showModel(id, media_type);
     };
 
-    let media = media_type;
+    let media: string = media_type;
     if (media_type === "movie") {
         media = "Movie";
     } else if (media_type === "tv") {
@@ -47,12 +47,13 @@ const Content: React.FC<{
             mb={5}
             onClick={contentViewHandler}
         >
-            <VStack 
-                position="relative" 
-                height="100%"
-            >
+            <VStack position="relative" height="100%">
                 <Image
-                    src={img ? `https://image.tmdb.org/t/p/w300/${img}` : no_poster}
+                    src={
+                        img
+                            ? `https://image.tmdb.org/t/p/w300/${img}`
+                            : no_poster
+                    }
                     alt={title}
                     height="100%"
                 />
@@ -71,21 +72,29 @@ const Content: React.FC<{
                     </Text>
                 )}
             </VStack>
-            <VStack flex="auto" justifyContent="space-between" p={1} w="100%" height="100px">
+            <VStack
+                flex="auto"
+                justifyContent="space-between"
+                p={1}
+                w="100%"
+                height="100px"
+            >
                 <Heading fontSize="18px" fontWeight="600" textAlign="center">
                     {title}
                 </Heading>
                 <HStack w="100%" justifyContent="space-between">
                     <HStack>
                         <Text>{media}</Text>
-                        <Text
-                            borderRadius={5}
-                            backgroundColor="#00FFCC"
-                            color="#222222"
-                            px={2}
-                        >
-                            {original_language.toUpperCase()}
-                        </Text>
+                        {original_language && (
+                            <Text
+                                borderRadius={5}
+                                backgroundColor="#00FFCC"
+                                color="#222222"
+                                px={2}
+                            >
+                                {original_language.toUpperCase()}
+                            </Text>
+                        )}
                     </HStack>
                     <Text>{release_date}</Text>
                 </HStack>
