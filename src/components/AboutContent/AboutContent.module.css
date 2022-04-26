@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+    .about {
+        width: 100% !important;
+        margin: 8px;
+    }
+
+    .potrait {
+        display: none;
+    }
+
+    .landscape {
+        display: block;
+    }
+
+    .overview {
+        max-height: max-content !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .potrait {
+        display: block;
+    }
+
+    .landscape {
+        display: none;
+    }
+}

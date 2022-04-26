@@ -5,6 +5,7 @@ import { Heading, HStack, VStack, Text, Image } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 
 import { img200, img400, img500, no_poster } from "../../utils/img";
+import classes from "./AboutContent.module.css";
 
 type Model = {
     name?: string;
@@ -60,17 +61,12 @@ const AboutContent: React.FC<{
     }, [details]);
 
     return (
-        // <HStack
-        //     color="alternate.default"
-        //     justifyContent="space-between"
-        //     alignItems="stretch"
-        // >
         <>
             {aboutDetails && (
                 <>
                     <VStack mr={3} alignSelf="center">
                         <Image
-                            display={{base: "none", md: "block"}}
+                            className={classes.potrait}
                             src={
                                 aboutDetails.poster_path
                                     ? `${img400}${aboutDetails!.poster_path}`
@@ -79,22 +75,20 @@ const AboutContent: React.FC<{
                             alt={aboutDetails.name ?? aboutDetails.title}
                         />
                         <Image
-                            display={{base: "block", md: "none"}}
+                            className={classes.landscape}
                             src={
                                 aboutDetails.backdrop_path
-                                    ? `${img500}${aboutDetails!.backdrop_path}`
+                                    ? `${img400}${aboutDetails!.backdrop_path}`
                                     : no_poster
                             }
                             alt={aboutDetails.name ?? aboutDetails.title}
                         />
                     </VStack>
                     <VStack
-                        w={{sm: "100%", md: "60%"}}
-                        h={{sm: "60%", md: "auto"}}
-                        margin={{base: "10px", md: "auto"}}
+                        className={classes.about}
+                        w="60%"
                         justifyContent="space-between"
                         overflowY="auto"
-                        overflowX={{sm: "auto", md: "hidden"}}
                     >
                         <VStack alignItems="flex-start">
                             <Heading color="primary.default">
@@ -130,7 +124,8 @@ const AboutContent: React.FC<{
                             </HStack>
                             <VStack alignItems="flex-start">
                                 <Text
-                                    maxHeight={{sm: "max-content", md: "115px"}}
+                                    className={classes.overview}
+                                    maxHeight="115px"
                                     overflowY="auto"
                                     textAlign="justify"
                                     marginBottom="5px"
@@ -219,7 +214,6 @@ const AboutContent: React.FC<{
                 </>
             )}
         </>
-        // </HStack>
     );
 };
 
