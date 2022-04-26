@@ -15,7 +15,7 @@ import {
 import { BsSearch } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 
-import { no_poster } from "../../utils/img";
+import { img200, no_poster } from "../../utils/img";
 
 document.addEventListener("click", (event: MouseEvent) => {
     const searchUL = event.target as Element;
@@ -98,9 +98,7 @@ const Search: React.FC<{
         return () => cancel();
     }, [searchInput]);
 
-    const contentViewHandler = (id: number, media_type: string) => {
-        // console.log(id, media_type);
-        
+    const contentViewHandler = (id: number, media_type: string) => {     
         props.showModel(id, media_type);
     }
 
@@ -147,7 +145,7 @@ const Search: React.FC<{
                             <Image
                                 src={
                                     result.poster_path
-                                        ? `https://image.tmdb.org/t/p/w400${result.poster_path}`
+                                        ? `${img200}${result.poster_path}`
                                         : no_poster
                                 }
                             ></Image>

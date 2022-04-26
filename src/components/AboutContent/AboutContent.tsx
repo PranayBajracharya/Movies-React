@@ -4,12 +4,13 @@ import axios from "axios";
 import { Heading, HStack, VStack, Text, Image } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 
-import { no_poster } from "../../utils/img";
+import { img200, img400, img500, no_poster } from "../../utils/img";
 
 type Model = {
     name?: string;
     title?: string;
     poster_path: string;
+    backdrop_path?: string;
     overview: string;
     release_date?: string;
     first_air_date?: string;
@@ -59,25 +60,41 @@ const AboutContent: React.FC<{
     }, [details]);
 
     return (
-        <HStack color="alternate.default" justifyContent="space-between" alignItems="stretch">
+        // <HStack
+        //     color="alternate.default"
+        //     justifyContent="space-between"
+        //     alignItems="stretch"
+        // >
+        <>
             {aboutDetails && (
                 <>
                     <VStack mr={3} alignSelf="center">
                         <Image
+                            display={{base: "none", md: "block"}}
                             src={
                                 aboutDetails.poster_path
-                                    ? `https://image.tmdb.org/t/p/w400/${
-                                          aboutDetails!.poster_path
-                                      }`
+                                    ? `${img400}${aboutDetails!.poster_path}`
                                     : no_poster
                             }
-                            alt="asd"
+                            alt={aboutDetails.name ?? aboutDetails.title}
+                        />
+                        <Image
+                            display={{base: "block", md: "none"}}
+                            src={
+                                aboutDetails.backdrop_path
+                                    ? `${img500}${aboutDetails!.backdrop_path}`
+                                    : no_poster
+                            }
+                            alt={aboutDetails.name ?? aboutDetails.title}
                         />
                     </VStack>
                     <VStack
-                        w="60%"
+                        w={{sm: "100%", md: "60%"}}
+                        h={{sm: "60%", md: "auto"}}
+                        margin={{base: "10px", md: "auto"}}
                         justifyContent="space-between"
                         overflowY="auto"
+                        overflowX={{sm: "auto", md: "hidden"}}
                     >
                         <VStack alignItems="flex-start">
                             <Heading color="primary.default">
@@ -111,13 +128,20 @@ const AboutContent: React.FC<{
                                     </>
                                 )}
                             </HStack>
-                            <VStack
-                                alignItems="flex-start"
-                                overflowY="auto"
-                                // maxHeight="170px"
-                            >
-                                <Text maxHeight="115px" overflowY="auto">{aboutDetails.overview}</Text>
-                                <VStack alignItems="flex-start">
+                            <VStack alignItems="flex-start">
+                                <Text
+                                    maxHeight={{sm: "max-content", md: "115px"}}
+                                    overflowY="auto"
+                                    textAlign="justify"
+                                    marginBottom="5px"
+                                    paddingRight="10px"
+                                >
+                                    {aboutDetails.overview}
+                                </Text>
+                                <VStack
+                                    alignItems="flex-start"
+                                    lineHeight="20px"
+                                >
                                     {aboutDetails.production_countries.length >
                                         0 && (
                                         <Text>
@@ -171,7 +195,7 @@ const AboutContent: React.FC<{
                                             <Image
                                                 src={
                                                     cast.profile_path
-                                                        ? `https://image.tmdb.org/t/p/w200${cast.profile_path}`
+                                                        ? `${img200}${cast.profile_path}`
                                                         : no_poster
                                                 }
                                                 alt={cast.id.toString()}
@@ -194,7 +218,8 @@ const AboutContent: React.FC<{
                     </VStack>
                 </>
             )}
-        </HStack>
+        </>
+        // </HStack>
     );
 };
 

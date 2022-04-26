@@ -7,7 +7,7 @@ import {
     Image,
 } from "@chakra-ui/react";
 
-import { no_poster } from "../../utils/img";
+import { img300, no_poster } from "../../utils/img";
 
 const Content: React.FC<{
     id: number;
@@ -50,7 +50,7 @@ const Content: React.FC<{
                 <Image
                     src={
                         img
-                            ? `https://image.tmdb.org/t/p/w300/${img}`
+                            ? `${img300}${img}`
                             : no_poster
                     }
                     alt={title}
