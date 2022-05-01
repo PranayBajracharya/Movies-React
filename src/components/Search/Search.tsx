@@ -73,20 +73,23 @@ const Search: React.FC<{
                         cancelToken: new axios.CancelToken((c) => (cancel = c)),
                     }
                 );
-                // console.log(data.results);
 
-                const searchArray = data.results.filter(
+                let count: number = 0;
+                const searchArray: SearchResult[] = data.results.filter(
                     (data: SearchResult, index: number) => {
-                        if (index > 4) {
+                        const validSearch: boolean =
+                            data.media_type === "movie" ||
+                            data.media_type === "tv";
+                        if (validSearch) {
+                            count++;
+                        }
+                        if (count > 5) {
                             return false;
                         }
-                        return (
-                            data.media_type === "movie" ||
-                            data.media_type === "tv"
-                        );
+                        return validSearch;
                     }
                 );
-                // console.log(searchArray);
+
                 setResults(searchArray);
                 document.getElementById("search-results")!.style.display =
                     "block";
@@ -98,9 +101,9 @@ const Search: React.FC<{
         return () => cancel();
     }, [searchInput]);
 
-    const contentViewHandler = (id: number, media_type: string) => {     
+    const contentViewHandler = (id: number, media_type: string) => {
         props.showModel(id, media_type);
-    }
+    };
 
     return (
         <HStack
@@ -140,7 +143,11 @@ const Search: React.FC<{
                             display="flex"
                             height="100px"
                             padding="5px"
-                            onClick={contentViewHandler.bind(null, result.id, result.media_type)}
+                            onClick={contentViewHandler.bind(
+                                null,
+                                result.id,
+                                result.media_type
+                            )}
                         >
                             <Image
                                 src={
