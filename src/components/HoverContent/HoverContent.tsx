@@ -4,19 +4,8 @@ import axios from "axios";
 import { Heading, HStack, VStack, Text } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 
-type Model = {
-    name?: string;
-    title?: string;
-    poster_path: string;
-    backdrop_path?: string;
-    overview: string;
-    release_date?: string;
-    first_air_date?: string;
-    vote_average?: number;
-    original_language: string;
-    production_countries: { name: string }[];
-    production_companies: { name: string }[];
-};
+import { Model } from "../../interfaces/types";
+
 
 const HoverContent: React.FC<{
     details: { id: number; media_type: string } | null;

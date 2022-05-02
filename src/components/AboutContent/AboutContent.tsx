@@ -7,31 +7,8 @@ import { BsYoutube } from "react-icons/bs";
 
 import { img200, img400, no_poster } from "../../utils/img";
 import classes from "./AboutContent.module.css";
+import { Model, Cast, Video } from "../../interfaces/types";
 
-type Model = {
-    name?: string;
-    title?: string;
-    poster_path: string;
-    backdrop_path?: string;
-    overview: string;
-    release_date?: string;
-    first_air_date?: string;
-    vote_average?: number;
-    original_language: string;
-    production_countries: { name: string }[];
-    production_companies: { name: string }[];
-};
-
-type Cast = {
-    id: number;
-    name: string;
-    profile_path: string;
-};
-
-type Video = {
-    id: number;
-    results: { id: string; key: string }[];
-};
 
 const AboutContent: React.FC<{
     details: { id: number; media_type: string } | null;

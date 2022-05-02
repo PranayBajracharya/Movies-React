@@ -16,10 +16,10 @@ import { BsSearch } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 
 import { img200, no_poster } from "../../utils/img";
+import { SearchResult } from "../../interfaces/types";
 
 document.addEventListener("click", (event: MouseEvent) => {
     const searchUL = event.target as Element;
-    // console.log(searchUL)
     if (!searchUL.matches(".dropdown")) {
         const dropdown = document.getElementById("search-results");
         if (dropdown) {
@@ -34,18 +34,6 @@ const showResults = () => {
     if (searchField) {
         searchField.style.display = "block";
     }
-};
-
-type SearchResult = {
-    id: number;
-    title?: string;
-    name?: string;
-    media_type: string;
-    poster_path?: string;
-    vote_average?: number;
-    release_date?: string;
-    first_air_date?: string;
-    original_language: string;
 };
 
 const Search: React.FC<{
