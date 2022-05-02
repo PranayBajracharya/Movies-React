@@ -57,13 +57,14 @@ const Content: React.FC<{
                 {vote_average !== 0 && (
                     <Text
                         position="absolute"
-                        top="-20px"
-                        right="-10px"
+                        top="-8px"
+                        right="0px"
                         backgroundColor="#00FFCC"
                         color="#222222"
                         w="28px"
-                        borderRadius={5}
+                        borderRadius="0 0 0 5px"
                         textAlign="center"
+                        marginTop="0px"
                     >
                         {vote_average}
                     </Text>
@@ -75,6 +76,7 @@ const Content: React.FC<{
                 p={1}
                 w="100%"
                 height="100px"
+                maxWidth="90%"
             >
                 <Heading
                     fontSize="18px"

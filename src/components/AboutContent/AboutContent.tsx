@@ -66,15 +66,13 @@ const AboutContent: React.FC<{
                     details!.id
                 }/videos?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
             );
-            console.log(data);
+            // console.log(data);
             setVideo(data);
         };
         fetchCast();
         fetchDetails();
         fetchVideo();
     }, [details]);
-
-    // https://www.youtube.com/watch?v=
 
     return (
         <>

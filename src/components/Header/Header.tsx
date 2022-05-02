@@ -13,8 +13,14 @@ const Header: React.FC<{
             paddingX={10}
             w="100%"
             maxW="1600px"
+            flexDirection={{ base: "column", md: "row" }}
         >
-            <Heading color="primary.default">Movies React</Heading>
+            <Heading
+                color="primary.default"
+                marginBottom={{ base: "5px", md: "0" }}
+            >
+                <NavLink to="/">Movies React</NavLink>
+            </Heading>
 
             <UnorderedList display="flex" styleType="none">
                 <ListItem mx={5}>
