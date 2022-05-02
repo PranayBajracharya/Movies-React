@@ -63,6 +63,7 @@ const Content: React.FC<{
                     details={{ id: id, media_type: media_type }}
                     hoverEnter={hoverEnterHandler}
                     hoverLeave={hoverLeaveHandler}
+                    click={contentViewHandler}
                 />
             )}
             <VStack position="relative" height="100%">
