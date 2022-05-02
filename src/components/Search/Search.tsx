@@ -148,6 +148,7 @@ const Search: React.FC<{
                                 result.id,
                                 result.media_type
                             )}
+                            cursor="pointer"
                         >
                             <Image
                                 src={

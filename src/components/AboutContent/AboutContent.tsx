@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Heading, HStack, VStack, Text, Image } from "@chakra-ui/react";
+import { Heading, HStack, VStack, Text, Image, Link } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
+import { BsYoutube } from "react-icons/bs";
 
-import { img200, img400, img500, no_poster } from "../../utils/img";
+import { img200, img400, no_poster } from "../../utils/img";
 import classes from "./AboutContent.module.css";
 
 type Model = {
@@ -27,11 +28,17 @@ type Cast = {
     profile_path: string;
 };
 
+type Video = {
+    id: number;
+    results: { id: string; key: string }[];
+};
+
 const AboutContent: React.FC<{
     details: { id: number; media_type: string } | null;
 }> = (props) => {
     const [aboutDetails, setAboutDetails] = useState<Model | null>(null);
     const [casts, setCasts] = useState<Cast[] | null>(null);
+    const [video, setVideo] = useState<Video | null>(null);
     const { details } = props;
 
     useEffect(() => {
@@ -44,10 +51,6 @@ const AboutContent: React.FC<{
             // console.log("Data", data);
             setAboutDetails(data);
         };
-        fetchDetails();
-    }, [details]);
-
-    useEffect(() => {
         const fetchCast = async () => {
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/${details!.media_type}/${
@@ -57,8 +60,21 @@ const AboutContent: React.FC<{
             // console.log("Cast", data.cast);
             setCasts(data.cast);
         };
+        const fetchVideo = async () => {
+            const { data } = await axios.get(
+                `https://api.themoviedb.org/3/${details!.media_type}/${
+                    details!.id
+                }/videos?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
+            );
+            console.log(data);
+            setVideo(data);
+        };
         fetchCast();
+        fetchDetails();
+        fetchVideo();
     }, [details]);
+
+    // https://www.youtube.com/watch?v=
 
     return (
         <>
@@ -209,6 +225,28 @@ const AboutContent: React.FC<{
                                     ))}
                                 </HStack>
                             </VStack>
+                        )}
+                        {video && video.results.length > 0 && (
+                            <Link
+                                href={`https://www.youtube.com/watch?v=${video.results[0].key}`}
+                                isExternal={true}
+                                display="flex"
+                                alignItems="center"
+                                backgroundColor="primary.default"
+                                color="alternate.default"
+                                width="100%"
+                                justifyContent="center"
+                                borderRadius="8px"
+                                padding="3px 0"
+                                _hover={{
+                                    textDecoration: "none",
+                                    color: "red"
+                                }}
+                                _focus={{ outline: "none" }}
+                            >
+                                <BsYoutube />
+                                <Text marginLeft="10px">Watch Trailer</Text>
+                            </Link>
                         )}
                     </VStack>
                 </>

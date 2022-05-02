@@ -48,14 +48,11 @@ const Content: React.FC<{
         >
             <VStack position="relative" height="100%">
                 <Image
-                    src={
-                        img
-                            ? `${img300}${img}`
-                            : no_poster
-                    }
+                    src={img ? `${img300}${img}` : no_poster}
                     alt={title}
                     height="100%"
                     onClick={contentViewHandler}
+                    cursor="pointer"
                 />
                 {vote_average !== 0 && (
                     <Text
@@ -79,7 +76,13 @@ const Content: React.FC<{
                 w="100%"
                 height="100px"
             >
-                <Heading fontSize="18px" fontWeight="600" textAlign="center" onClick={contentViewHandler}>
+                <Heading
+                    fontSize="18px"
+                    fontWeight="600"
+                    textAlign="center"
+                    onClick={contentViewHandler}
+                    cursor="pointer"
+                >
                     {title}
                 </Heading>
                 <HStack w="100%" justifyContent="space-between">
@@ -104,19 +107,3 @@ const Content: React.FC<{
 };
 
 export default Content;
-// import Content from "../../interfaces/content";
-
-// const Content: React.FC<{ content: Content }> = (props) => {
-//     const { poster_path, title } = props;
-//     return (
-//         <GridItem
-//             display="flex"
-//             justifySelf="center"
-//         >
-//             <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`}></img>
-//             <Heading>{title}</Heading>
-//         </GridItem>
-//     );
-// };
-
-// export default Content;
