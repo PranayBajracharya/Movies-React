@@ -55,7 +55,7 @@ const AboutContent: React.FC<{
         <>
             {aboutDetails && (
                 <>
-                    <VStack mr={3} alignSelf="center">
+                    <VStack mr={3} alignSelf="center" w="40%">
                         <Image
                             className={classes.potrait}
                             src={
