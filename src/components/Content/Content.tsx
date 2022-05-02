@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     GridItem,
     Heading,
@@ -7,6 +8,7 @@ import {
     Image,
 } from "@chakra-ui/react";
 
+import HoverContent from "../HoverContent/HoverContent";
 import { img300, no_poster } from "../../utils/img";
 
 const Content: React.FC<{
@@ -19,6 +21,7 @@ const Content: React.FC<{
     media_type: string;
     showModel: (id: number, media_type: string) => void;
 }> = (props) => {
+    const [hovered, setHovered] = useState<boolean>(false);
     const {
         id,
         img,
@@ -33,6 +36,14 @@ const Content: React.FC<{
         props.showModel(id, media_type);
     };
 
+    const hoverEnterHandler = () => {
+        setHovered(true);
+    };
+
+    const hoverLeaveHandler = () => {
+        setHovered(false);
+    };
+
     let media: string = media_type;
     if (media_type === "movie") {
         media = "Movie";
@@ -45,13 +56,23 @@ const Content: React.FC<{
             flexDirection="column"
             alignItems="center"
             mb={5}
+            position="relative"
         >
+            {hovered && (
+                <HoverContent
+                    details={{ id: id, media_type: media_type }}
+                    hoverEnter={hoverEnterHandler}
+                    hoverLeave={hoverLeaveHandler}
+                />
+            )}
             <VStack position="relative" height="100%">
                 <Image
                     src={img ? `${img300}${img}` : no_poster}
                     alt={title}
                     height="100%"
                     onClick={contentViewHandler}
+                    onMouseEnter={hoverEnterHandler}
+                    onMouseLeave={hoverLeaveHandler}
                     cursor="pointer"
                 />
                 {vote_average !== 0 && (
