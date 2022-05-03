@@ -12,6 +12,10 @@ const TVSeries: React.FC<{
     const [tvSeries, setTVSeries] = useState<any[]>([]);
 
     useEffect(() => {
+        document.title = "TV-Series | Movies React";
+    }, []);
+
+    useEffect(() => {
         const fetchTVSeries = async () => {
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/discover/tv?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`

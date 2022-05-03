@@ -12,6 +12,10 @@ const Trending: React.FC<{
     const [trending, setTrending] = useState<any[]>([]);
 
     useEffect(() => {
+        document.title = "Home | Movies React";
+     }, []);
+
+    useEffect(() => {
         const fetchTrending = async () => {
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/trending/all/day?api_key=7fd40db037363e45a0eb6dda8a0915b3&page=${page}`
