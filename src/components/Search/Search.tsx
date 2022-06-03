@@ -56,7 +56,7 @@ const Search: React.FC<{
         const search = async () => {
             try {
                 const { data } = await axios.get(
-                    `https://api.themoviedb.org/3/search/multi?api_key=7fd40db037363e45a0eb6dda8a0915b3&query=${searchInput}&page=1&include_adult=false`,
+                    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${searchInput}&page=1&include_adult=false`,
                     {
                         cancelToken: new axios.CancelToken((c) => (cancel = c)),
                     }

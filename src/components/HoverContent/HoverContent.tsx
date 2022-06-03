@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import { Heading, HStack, VStack, Text } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
-
 import { Model } from "../../interfaces/types";
-
 
 const HoverContent: React.FC<{
     details: { id: number; media_type: string } | null;
@@ -21,7 +18,7 @@ const HoverContent: React.FC<{
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/${details!.media_type}/${
                     details!.id
-                }?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
+                }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
             setHoverDetails(data);
         };

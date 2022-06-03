@@ -23,7 +23,7 @@ const AboutContent: React.FC<{
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/${details!.media_type}/${
                     details!.id
-                }?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
+                }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
             // console.log("Data", data);
             setAboutDetails(data);
@@ -32,7 +32,7 @@ const AboutContent: React.FC<{
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/${details!.media_type}/${
                     details!.id
-                }/credits?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
+                }/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
             // console.log("Cast", data.cast);
             setCasts(data.cast);
@@ -41,7 +41,7 @@ const AboutContent: React.FC<{
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/${details!.media_type}/${
                     details!.id
-                }/videos?api_key=7fd40db037363e45a0eb6dda8a0915b3&language=en-US`
+                }/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
             // console.log(data);
             setVideo(data);
