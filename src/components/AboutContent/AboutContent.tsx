@@ -25,7 +25,6 @@ const AboutContent: React.FC<{
                     details!.id
                 }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
-            // console.log("Data", data);
             setAboutDetails(data);
         };
         const fetchCast = async () => {
@@ -34,7 +33,6 @@ const AboutContent: React.FC<{
                     details!.id
                 }/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
-            // console.log("Cast", data.cast);
             setCasts(data.cast);
         };
         const fetchVideo = async () => {
@@ -43,7 +41,6 @@ const AboutContent: React.FC<{
                     details!.id
                 }/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
             );
-            // console.log(data);
             setVideo(data);
         };
         fetchCast();
