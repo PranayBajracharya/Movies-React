@@ -88,7 +88,7 @@ const Content: React.FC<{
                         textAlign="center"
                         marginTop="0px"
                     >
-                        {vote_average}
+                        {vote_average === 10 ? 10 : vote_average.toFixed(1)}
                     </Text>
                 )}
             </VStack>
