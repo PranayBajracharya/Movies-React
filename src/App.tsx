@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { Suspense, useState } from "react";
 
 import Header from "./components/Header/Header";
-import ErrorPage from "./pages/ErrorPage";
 import Model from "./UI/Model";
 import AboutContent from "./components/AboutContent/AboutContent";
 import { Spinner } from "@chakra-ui/react";
@@ -10,6 +9,7 @@ import { Spinner } from "@chakra-ui/react";
 const Trending = React.lazy(() => import("./pages/Trending"));
 const Movies = React.lazy(() => import("./pages/Movies"));
 const TVSeries = React.lazy(() => import("./pages/TVSeries"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 function App() {
   const [model, setModel] = useState<boolean>(false);

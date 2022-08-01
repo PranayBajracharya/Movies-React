@@ -101,7 +101,11 @@ const AboutContent: React.FC<{
                     <Text color="#00FFCC">
                       <AiFillStar />
                     </Text>
-                    <Text>{aboutDetails.vote_average}</Text>
+                    <Text>
+                      {aboutDetails.vote_average === 10
+                        ? 10
+                        : aboutDetails?.vote_average?.toFixed(1)}
+                    </Text>
                   </>
                 )}
               </HStack>
