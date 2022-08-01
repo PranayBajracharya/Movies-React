@@ -1,91 +1,92 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Heading, HStack, VStack, Text } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
-import { Model } from "../../interfaces/types";
 
-const HoverContent: React.FC<{
-    details: { id: number; media_type: string } | null;
-    hoverEnter: () => void;
-    hoverLeave: () => void;
-    click: () => void;
-}> = (props) => {
-    const [hoverDetails, setHoverDetails] = useState<Model | null>(null);
-    const { details, hoverEnter, hoverLeave, click } = props;
+interface Props {
+  title: string;
+  media_type: string;
+  original_language: string;
+  vote_average: number;
+  overview?: string;
+  hoverEnter: () => void;
+  hoverLeave: () => void;
+  click: () => void;
+}
 
-    useEffect(() => {
-        const fetchDetails = async () => {
-            const { data } = await axios.get(
-                `https://api.themoviedb.org/3/${details!.media_type}/${
-                    details!.id
-                }?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-            );
-            setHoverDetails(data);
-        };
+const HoverContent: React.FC<Props> = (props) => {
+  const {
+    title,
+    media_type,
+    original_language,
+    vote_average,
+    overview,
+    hoverEnter,
+    hoverLeave,
+    click,
+  } = props;
 
-        fetchDetails();
-    }, [details]);
-
-    return (
-        <>
-            {hoverDetails && (
-                <VStack
-                    position="absolute"
-                    bottom="0%"
-                    backgroundColor="secondary.default"
-                    zIndex="10"
-                    padding="10px"
-                    width="100%"
-                    maxHeight="100%"
-                    onMouseEnter={hoverEnter}
-                    onMouseLeave={hoverLeave}
-                >
-                    <Heading
-                        color="primary.default"
-                        size="md"
-                        onClick={click}
-                        cursor="pointer"
-                        textAlign="center"
-                    >
-                        {hoverDetails.name ?? hoverDetails.title}
-                    </Heading>
-                    <HStack fontSize="15px">
-                        {details!.media_type === "movie" && <Text>Movie</Text>}
-                        {details!.media_type === "tv" && <Text>TV Series</Text>}
-                        {hoverDetails.original_language && (
-                            <Text
-                                backgroundColor="#00FFCC"
-                                color="#222222"
-                                w="30px"
-                                borderRadius={5}
-                                textAlign="center"
-                            >
-                                {hoverDetails.original_language.toUpperCase()}{" "}
-                            </Text>
-                        )}
-                        {hoverDetails.vote_average !== 0 && (
-                            <>
-                                <Text color="#00FFCC">
-                                    <AiFillStar />{" "}
-                                </Text>
-                                <Text>{hoverDetails.vote_average}</Text>
-                            </>
-                        )}
-                    </HStack>
-                    <VStack alignItems="flex-start">
-                        <Text
-                            maxHeight="150px"
-                            overflowY="hidden"
-                            textAlign="justify"
-                            fontSize="14px"
-                        >
-                            {hoverDetails.overview}
-                        </Text>
-                    </VStack>
-                </VStack>
+  return (
+    <>
+      {overview && (
+        <VStack
+          position="absolute"
+          bottom="0%"
+          backgroundColor="secondary.default"
+          zIndex="10"
+          padding="10px"
+          width="100%"
+          maxHeight="100%"
+          onMouseEnter={hoverEnter}
+          onMouseLeave={hoverLeave}
+        >
+          <Heading
+            color="primary.default"
+            size="md"
+            onClick={click}
+            cursor="pointer"
+            textAlign="center"
+          >
+            {title}
+          </Heading>
+          <HStack fontSize="15px">
+            {media_type === "movie" && <Text>Movie</Text>}
+            {media_type === "tv" && <Text>TV Series</Text>}
+            {original_language && (
+              <Text
+                backgroundColor="#00FFCC"
+                color="#222222"
+                w="30px"
+                borderRadius={5}
+                textAlign="center"
+              >
+                {original_language.toUpperCase()}&nbsp;
+              </Text>
             )}
-        </>
-    );
+            {vote_average !== 0 && (
+              <>
+                <Text color="#00FFCC">
+                  <AiFillStar />
+                  &nbsp;
+                </Text>
+                <Text>
+                  {vote_average === 10 ? 10 : vote_average.toFixed(1)}
+                </Text>
+              </>
+            )}
+          </HStack>
+          <VStack alignItems="flex-start">
+            <Text
+              maxHeight="150px"
+              overflowY="hidden"
+              textAlign="justify"
+              fontSize="14px"
+            >
+              {overview}
+            </Text>
+          </VStack>
+        </VStack>
+      )}
+    </>
+  );
 };
 
 export default HoverContent;
