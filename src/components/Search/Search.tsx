@@ -115,13 +115,11 @@ const Search: React.FC<{
           id="search-results"
           position="absolute"
           w="100%"
-          top="100%"
+          top="105%"
           styleType="none"
           zIndex="10"
           backgroundColor="secondary.default"
-          // backgroundColor="red"
           left="-0.5rem"
-          // padding="10px 0"
         >
           {results.map((result) => (
             <ListItem
