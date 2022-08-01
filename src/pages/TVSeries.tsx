@@ -26,8 +26,6 @@ const TVSeries: React.FC<{
     fetchTVSeries();
   }, [page]);
 
-  console.log(tvSeries);
-
   return (
     <VStack>
       <Grid

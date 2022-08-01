@@ -54,7 +54,6 @@ const Content: React.FC<Props> = (props) => {
     media = "TV Series";
   }
 
-  console.log({ hovered, overview });
   return (
     <GridItem
       display="flex"

@@ -49,7 +49,7 @@ const AboutContent: React.FC<{
 
   return (
     <>
-      {aboutDetails && (
+      {aboutDetails ? (
         <>
           <VStack mr={3} alignSelf="center" w="40%">
             <Image
@@ -197,6 +197,10 @@ const AboutContent: React.FC<{
             )}
           </VStack>
         </>
+      ) : (
+        <Text w="100%" align="center">
+          Something did not go right.
+        </Text>
       )}
     </>
   );
