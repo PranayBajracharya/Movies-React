@@ -99,7 +99,7 @@ const AboutContent: React.FC<{
                 {aboutDetails.vote_average !== 0 && (
                   <>
                     <Text color="#00FFCC">
-                      <AiFillStar />{" "}
+                      <AiFillStar />
                     </Text>
                     <Text>{aboutDetails.vote_average}</Text>
                   </>

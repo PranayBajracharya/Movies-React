@@ -58,14 +58,13 @@ const HoverContent: React.FC<Props> = (props) => {
                 borderRadius={5}
                 textAlign="center"
               >
-                {original_language.toUpperCase()}&nbsp;
+                {original_language.toUpperCase()}
               </Text>
             )}
             {vote_average !== 0 && (
               <>
                 <Text color="#00FFCC">
                   <AiFillStar />
-                  &nbsp;
                 </Text>
                 <Text>
                   {vote_average === 10 ? 10 : vote_average.toFixed(1)}
