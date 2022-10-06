@@ -89,6 +89,7 @@ const AboutContent: React.FC<{
                 className={classes.about}
                 w="60%"
                 justifyContent="space-between"
+                alignItems="flex-start"
                 overflowY="auto"
               >
                 <VStack alignItems="flex-start">
